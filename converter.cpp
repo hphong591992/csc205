@@ -33,11 +33,11 @@ int main ()
     {
           char command; 
           string number;
-          string sign;
-          string exponent;
-          string mantissa;
-          string ans;
-          string res;
+          string sign = "";
+          string exponent = "";
+          string mantissa = "";
+          string ans = "";
+          string res = "";
           int e,m,ll,c, maxlength;
           cout << "1. Convert decimal to IEEE 754 single precision. " << endl;
           cout << "2. Convert decimal to IEEE 754 double precision. " << endl;
@@ -64,7 +64,7 @@ int main ()
                  m = 51;
                  ll = 64;
                  c = 1023;
-                 maxlength = 307;
+                 maxlength = 308;
              }              
              if (!valid(number))
              {
@@ -105,7 +105,8 @@ int main ()
                 }
                 else
                 {
-                int exp = atoi(temp.c_str());
+                long long exp = atoi(temp.c_str());
+                cout << "Exponent: " << exp << endl;
                 bool start = false;
                 for (int i=ll-1;i>=0;--i)
                 {
@@ -115,15 +116,15 @@ int main ()
                     if (start)
                        res += (char) (bit+48);
                 }
-//                cout << res << endl;
+//               cout << res << endl;
                 /// CUT THE INTEGER PART
                 int l = res.length();
                 double rest = abs(atof (number.c_str()));
                 rest -= (double) exp;
                 int count = 0;
                 double t = 1.0;
-                cout << rest << endl;
-                cout << res << endl;
+//                cout << rest << endl;
+//                cout << res << endl;
                 while (rest>0)
                 {
                       t /= 2.0;
@@ -136,9 +137,12 @@ int main ()
                           res = res + "0";                          
                       count++;
                       if (count+l==ll)
+                      {
+                         if (rest>0)                            
                          break;                                               
+                      }
                 }                
-                cout << res << endl;
+//                cout << res << endl;
     //            cout << res << endl;
                 exp = (l-1) + c;
   //              cout << exp << endl;
