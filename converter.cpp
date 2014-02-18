@@ -106,7 +106,7 @@ int main ()
                 else
                 {
                 long long exp = atoi(temp.c_str());
-                cout << "Exponent: " << exp << endl;
+//                cout << "Exponent: " << exp << endl;
                 bool start = false;
                 for (int i=ll-1;i>=0;--i)
                 {
@@ -124,7 +124,7 @@ int main ()
                 int count = 0;
                 double t = 1.0;
 //                cout << rest << endl;
-//                cout << res << endl;
+//                cout << res << endl;                 
                 while (rest>0)
                 {
                       t /= 2.0;
@@ -150,9 +150,18 @@ int main ()
                 {
                     int bit = (exp >> i) & 1;
                     exponent += (char) (bit+48);
-                }
+                }                
 //                cout << exponent << endl;
-                mantissa = res.substr(1);
+                if (res.length()==0)
+                {
+                   exponent = "";
+                   for (int i=0;i<e;++i)                
+                       exponent += "0";
+                   for (int i=0;i<m;++i)
+                       mantissa += "0";
+                }
+                else
+                    mantissa = res.substr(1);                
                 while (mantissa.length()<m)
                       mantissa += "0";
                 if (mantissa.length()>m)
@@ -237,8 +246,8 @@ int main ()
                  if (sign=="-")
                     ans *= -1;
                  // CONVERT EXPONENT TO DECIMAL
-                 int exp = 0;
-                 int t = 1;
+                 long long exp = 0;
+                 long long t = 1;
                  if (exponent[e-1]=='1')
                     exp = 1;
                  else
