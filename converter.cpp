@@ -95,7 +95,7 @@ int main ()
                    temp = number.substr(1,number.find_first_of('.'));
                 else                    
                    temp = number.substr(0,number.find_first_of('.'));
-                if (number.length()>maxlength)
+                if (temp.length()>maxlength)
                 {
                    for (int i=0;i<e;++i)
                        exponent += '1';
