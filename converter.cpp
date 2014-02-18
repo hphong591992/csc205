@@ -109,7 +109,7 @@ int main ()
 //                cout << "Exponent: " << exp << endl;
                 bool start = false;
                 for (int i=ll-1;i>=0;--i)
-                {
+                {   
                     int bit = (exp >> i) & 1;
                     if (bit==1)
                        start = true;
@@ -136,11 +136,8 @@ int main ()
                       else
                           res = res + "0";                          
                       count++;
-                      if (count+l==ll)
-                      {
-                         if (rest>0)                            
-                         break;                                               
-                      }
+                      if (count+l==ll)                        
+                         break;                                                                     
                 }                
 //                cout << res << endl;
     //            cout << res << endl;
@@ -219,6 +216,25 @@ int main ()
              // CHECK INFINITY 
              bool check1 = true;
              bool check2 = true;
+             bool check3 = true;
+             for (int i=0;i<e;++i)
+             if (exponent[i]=='1')
+             {
+                check3 = false;
+                break;
+             }             
+             for (int i=0;i<m;++i)
+             if (mantissa[i]=='1')
+             {
+                check3 = false;
+                break;
+             }
+             if (check3)
+             {
+                cout << endl;                        
+                cout << "DECIMAL CONVERSION IS: 0" << endl << endl;
+                continue;
+             }
              for (int i=0;i<e;++i)
              if (exponent[i]=='0')
              {
